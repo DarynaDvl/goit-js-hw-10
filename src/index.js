@@ -30,6 +30,9 @@ fetchBreeds()
 
     new SlimSelect({
       select: refs.select,
+      settings: {
+        placeholderText: 'Select a breed',
+      },
     });
 
     refs.loader.classList.add('hidden');
@@ -55,8 +58,8 @@ function onChange() {
     })
     .catch(error => {
       refs.loader.classList.add('hidden');
-      refs.error.classList.remove('hidden');
-      onError(error);
+      // refs.error.classList.remove('hidden');
+      onError('No info. Please select another breed.');
     });
 }
 
@@ -82,5 +85,5 @@ function createMarkUp(array) {
 
 // custom notify
 function onError(error) {
-  Notify.failure(`❌${error}`);
+  Notify.failure(`${error}`);
 }

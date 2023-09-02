@@ -7,6 +7,7 @@ const API = 'https://api.thecatapi.com/v1';
 
 export function fetchBreeds() {
   const END_POINT = '/breeds';
+
   return fetch(`${API}${END_POINT}`)
     .then(resp => resp.json())
     .catch(error => {
@@ -19,7 +20,8 @@ export function fetchCatByBreed(breedId) {
   const params = new URLSearchParams({
     breed_ids: breedId,
   });
-  return axios(`${API}${END_POINT}?${params}`)
+  return axios
+    .get(`${API}${END_POINT}?${params}`)
     .then(resp => resp.data)
     .catch(error => {
       throw new Error(error.message);
